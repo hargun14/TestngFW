@@ -1,4 +1,4 @@
-package basePackage;
+package basepackage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -47,7 +47,7 @@ public class baseclass {
 //		IE code
 	}
 
-	driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	return driver;
 	
 	}}

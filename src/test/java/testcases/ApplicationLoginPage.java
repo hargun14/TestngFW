@@ -10,9 +10,9 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-
-import basePackage.baseclass;
-import pageObject.HomePage;
+import basepackage.baseclass;
+import pageobject.HomePage;
+import pageobject.LoginPage;
 
 public class ApplicationLoginPage extends baseclass{
 	
@@ -25,20 +25,21 @@ public class ApplicationLoginPage extends baseclass{
 		driver=initalizedriver();
 		driver.get(prop.getProperty("URL"));
 		System.out.println("Launching Website");
-	}
-	
-	
+		}
 	
 	@Test
 	public void navigatehomepage() throws IOException {
 		
-		//driver=initalizedriver();
-		//driver.get(prop.getProperty("URL"));
 		HomePage home= new HomePage(driver);
-		home.getLogin();
-		//driver.close();
+		home.getlogin();
 		}
 		
+	
+	
+	
+	
+	
+	
     @AfterTest
     
     public void closeTest() {

@@ -1,4 +1,4 @@
-package pageObject;
+package pageobject;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,22 +14,17 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage {
 	
 	public WebDriver driver;
-	public Properties prop;
+	public Properties data;
 	public String 	Passwords;
-	public String 	Username;
-	
-	
-
+	public String 	Usernames;
     public LoginPage(WebDriver driver) throws IOException{
-    	prop=new Properties();
+    	data=new Properties();
     	FileInputStream fis= new FileInputStream("C:\\Users\\DELL\\Desktop\\Project\\HARGUNQA\\src\\test\\resources\\DataFile");
-    	prop.load(fis);
-    	prop.getProperty("Username");
-    	prop.getProperty("Passwords");
+    	data.load(fis);
+    	String user=data.getProperty("Usernames");
+    	String pass=data.getProperty("Passwords");
 	  this.driver=driver;
-	  PageFactory.initElements(driver,this);
-	  
-  }
+	  PageFactory.initElements(driver,this);}
   
  @FindBy(xpath="//input[@id='user_email']")
   private WebElement email;
@@ -37,14 +32,12 @@ public class LoginPage {
  @FindBy(xpath="//input[@type='submit' and @value='Log In']")
  private WebElement button;		
   
- @FindBy(xpath="//*[@class='form-control input-hg' and @id='user_password'] ")
+ @FindBy(xpath="//*[@id='user_password'] ")
   private WebElement password;
 
-  
-  
-  public void getcredentials() {
-	  email.sendKeys(prop.getProperty("Username"));
-	  password.sendKeys(prop.getProperty("Passwords"));
+ public void dologin(String user, String pass) {
+ email.sendKeys(user);
+ password.sendKeys(pass);
 	  button.click();
 	  }
   

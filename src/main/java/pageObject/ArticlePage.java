@@ -1,0 +1,56 @@
+package pageobject;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import basepackage.component;
+
+public class ArticlePage extends component {
+	
+	public WebDriver driver;
+	
+	
+public	ArticlePage  (WebDriver driver){
+		 this.driver=driver;
+		 PageFactory.initElements(driver,this);
+	
+}
+	
+	
+	
+	@FindBy(xpath="//h3[ text()='Categories']")
+	private WebElement header;
+	
+	@FindBy(xpath="//li[@class='cat-item cat-item-13']")
+	private WebElement listSelenium;
+	
+	@FindBy(xpath="//div[@style=\"position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;\"])")
+	private WebElement popupwindow;
+	
+	public void listselect(){
+		display(header);
+		System.out.println(header.getText());
+		}
+	
+	public void elementPresent() {
+		
+		display(popupwindow);
+		}
+	
+	
+	
+	
+public void selectseleniumoption() {
+		
+		click(listSelenium);
+		System.out.println("option selected is selenium");
+	
+}
+	
+	
+	
+		
+
+}
