@@ -1,8 +1,11 @@
 package basepackage;
 
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
-public class component {
+import projectenum.VerificationProperties;
+
+public class Component {
 
 	public void click(WebElement element) {
 		element.click();
@@ -16,5 +19,16 @@ public class component {
 
 		element.isDisplayed();
 	}
+	
+	public void verifyElement(WebElement element, VerificationProperties property, String expected) {
+		switch(property){
+			case DISPLAYED:
+				Assert.assertEquals(Boolean.toString(element.isDisplayed()), expected);
+			}
+	}
 
+	
+	
+	
+	
 }

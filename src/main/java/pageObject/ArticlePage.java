@@ -5,9 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import basepackage.component;
+import basepackage.Component;
 
-public class ArticlePage extends component {
+public class ArticlePage extends Component {
 	
 	public WebDriver driver;
 	
@@ -15,10 +15,7 @@ public class ArticlePage extends component {
 public	ArticlePage  (WebDriver driver){
 		 this.driver=driver;
 		 PageFactory.initElements(driver,this);
-	
-}
-	
-	
+	}
 	
 	@FindBy(xpath="//h3[ text()='Categories']")
 	private WebElement header;
@@ -34,16 +31,8 @@ public	ArticlePage  (WebDriver driver){
 		System.out.println(header.getText());
 		}
 	
-	public void elementPresent() {
-		
-		display(popupwindow);
-		}
 	
-	
-	
-	
-public void selectseleniumoption() {
-		
+public void selectseleniumoption() {		
 		click(listSelenium);
 		System.out.println("option selected is selenium");
 	

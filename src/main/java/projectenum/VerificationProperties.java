@@ -1,19 +1,18 @@
-package enums;
+package projectenum;
 
 public enum VerificationProperties {
 	
-	UP("up"),
-    DOWN("down"),
-    LEFT("left"),
-    RIGHT("right");
-
-    private String property;
+	DISPLAYED("displayed"),
+	SELECTED("selected");
+	
+	
+	private String property;
 
     VerificationProperties(String property) {
         this.property = property;
     }
 
-    public String getDirection() {
+    public String getProperty() {
         return property;
     }
 

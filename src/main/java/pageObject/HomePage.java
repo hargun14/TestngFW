@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import basepackage.component;
+import basepackage.Component;
 
-public class HomePage extends component {
+public class HomePage extends Component {
 
 	public WebDriver driver;
 	//global variable

@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class baseclass {
+public class BaseClass {
 
 	public  WebDriver driver;
     public Properties prop;
@@ -47,7 +47,7 @@ public class baseclass {
 //		IE code
 	}
 
-	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	return driver;
 	
 	}}
