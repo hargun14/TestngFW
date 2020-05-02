@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import basepackage.Component;
+import components.Component;
 
 public class ArticlePage extends Component {
 	
@@ -23,11 +23,9 @@ public	ArticlePage  (WebDriver driver){
 	@FindBy(xpath="//li[@class='cat-item cat-item-13']")
 	private WebElement listSelenium;
 	
-	@FindBy(xpath="//div[@style=\"position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;\"])")
-	private WebElement popupwindow;
+	
 	
 	public void listselect(){
-		display(header);
 		System.out.println(header.getText());
 		}
 	

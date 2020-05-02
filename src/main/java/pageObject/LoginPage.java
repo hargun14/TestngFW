@@ -31,7 +31,11 @@ public class LoginPage {
 
 	@FindBy(xpath = "//input[@id='user_password']")
 	private WebElement password;
-
+ 
+	@FindBy(xpath="//div[@class='alert alert-danger']")
+	private WebElement errormessage;
+	
+	
 	public void dologin(String user, String pass) {
 		System.out.println(user+" - " + pass);
 		email.sendKeys(user);
@@ -39,6 +43,17 @@ public class LoginPage {
 		button.click();
 		}
 
+	public void errorlogin(String Invalidname, String Invalidpass) {
+		System.out.println(Invalidname+" - " + Invalidpass);
+		email.sendKeys(Invalidname);
+		password.sendKeys(Invalidname);
+		button.click();
+	    errormessage.isDisplayed();
+		}
+
+	
+	
+	
 	public void gettitle() {
 
 		String Title = driver.getTitle();
