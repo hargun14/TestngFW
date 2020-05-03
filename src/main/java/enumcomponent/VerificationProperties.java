@@ -1,4 +1,4 @@
-package projectenum;
+package enumcomponent;
 
 public enum VerificationProperties {
 	

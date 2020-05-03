@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import components.Component;
-import projectenum.VerificationProperties;
+import enumcomponent.VerificationProperties;
 
 public class PracticePage extends Component {
 
