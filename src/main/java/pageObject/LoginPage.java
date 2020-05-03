@@ -1,4 +1,4 @@
-package pageObject;
+package pageobject;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,53 +12,53 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
-	
+
 	public WebDriver driver;
-	public Properties prop;
-	public String 	Passwords;
-	public String 	Username;
-	
-	
+	//public String Passwords;
+	//public String Usernames;
 
-    public LoginPage(WebDriver driver) throws IOException{
-    	prop=new Properties();
-    	FileInputStream fis= new FileInputStream("C:\\Users\\DELL\\Desktop\\Project\\HARGUNQA\\src\\test\\resources\\DataFile");
-    	prop.load(fis);
-    	prop.getProperty("Username");
-    	prop.getProperty("Passwords");
-	  this.driver=driver;
-	  PageFactory.initElements(driver,this);
-	  
-  }
-  
- @FindBy(xpath="//input[@id='user_email']")
-  private WebElement email;
-  
- @FindBy(xpath="//input[@type='submit' and @value='Log In']")
- private WebElement button;		
-  
- @FindBy(xpath="//*[@class='form-control input-hg' and @id='user_password'] ")
-  private WebElement password;
+	public LoginPage(WebDriver driver) throws IOException {
 
-  
-  
-  public void getcredentials() {
-	  email.sendKeys(prop.getProperty("Username"));
-	  password.sendKeys(prop.getProperty("Passwords"));
-	  button.click();
-	  }
-  
-  
-public void gettitle() {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+
+	@FindBy(xpath = "//input[@id='user_email']")
+	private WebElement email;
+
+	@FindBy(xpath = "//input[@type='submit' and @value='Log In']")
+	private WebElement button;
+
+	@FindBy(xpath = "//input[@id='user_password']")
+	private WebElement password;
+ 
+	@FindBy(xpath="//div[@class='alert alert-danger']")
+	private WebElement errormessage;
 	
-	String Title=driver.getTitle();
-	System.out.println(Title);
 	
+	public void dologin(String user, String pass) {
+		System.out.println(user+" - " + pass);
+		email.sendKeys(user);
+		password.sendKeys(pass);
+		button.click();
+		}
+
+	public void errorlogin(String Invalidname, String Invalidpass) {
+		System.out.println(Invalidname+" - " + Invalidpass);
+		email.sendKeys(Invalidname);
+		password.sendKeys(Invalidname);
+		button.click();
+	    errormessage.isDisplayed();
+		}
+
+	
+	
+	
+	public void gettitle() {
+
+		String Title = driver.getTitle();
+		System.out.println(Title);
+
+	}
+
 }
-	  
-
-	
-} 
-	  
-	  
-	  
