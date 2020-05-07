@@ -8,9 +8,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * @author DELL
- *
+/**Created class which has get method and takes filename and key as parameters
+ * Hashmap  Cache takes String and properties.
  */
 public class PropertyUtil {
 

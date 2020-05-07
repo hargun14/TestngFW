@@ -13,18 +13,23 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import enumcomponent.VerificationProperties;
+import utils.PropertyUtil;
 
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * Component class contains common method which is used in all test cases
+ *
+ */
 public class Component {
 	public WebDriver driver;
-	public Properties prop;
 	public String delay;
+	
+
 
 	public void click(WebElement element) {
 		element.click();
-		System.out.println("hi");
 	}
 
 	public void enterText(WebElement element, String data) {
@@ -32,11 +37,7 @@ public class Component {
 	}
 
 	public long getImplicitlyWait() throws IOException {
-		prop = new Properties();
-		FileInputStream fis = new FileInputStream(
-				"C:\\Users\\DELL\\Desktop\\FW\\TestngFW\\src\\main\\resources\\config.properties");
-		prop.load(fis);
-		String implicitlyWait = prop.getProperty("delay");
+		String implicitlyWait=PropertyUtil.get("config.properties", "delay");
 		if (implicitlyWait != null)
 			return Long.parseLong(implicitlyWait);
 		else

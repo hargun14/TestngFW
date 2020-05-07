@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 import components.BaseClass;
 import pageobject.ArticlePage;
 import pageobject.HomePage;
+import utils.PropertyUtil;
 
 public class ApplicationArticle extends BaseClass {
 
@@ -23,7 +24,8 @@ public class ApplicationArticle extends BaseClass {
 	
 	public void openpage() throws IOException {
 		driver=initalizedriver();
-		driver.get(prop.getProperty("URL"));
+		System.out.println(PropertyUtil.get("config.properties", "URL"));
+		driver.get(PropertyUtil.get("config.properties", "URL"));
 		System.out.println("Launching Website");
 		HomePage home=new HomePage(driver);	
 		System.out.println("Landed to main page of Website");
@@ -31,17 +33,22 @@ public class ApplicationArticle extends BaseClass {
 		System.out.println("Clicked on homelink");
 		home.clickarticle();
 		System.out.println(" Reached articles page");
-	
-		}
-	
+		
+}
 	@Test
 	
-	    public void pagedisplay() {
-		ArticlePage article= new ArticlePage(driver);
-		System.out.println(" Validate Articles page");
-		article.listselect();
-		article.selectseleniumoption();
-		System.out.println("New Page will open");
-	  }
+    public void pagedisplay() {
+	ArticlePage article= new ArticlePage(driver);
+	System.out.println(" Validate Articles page");
+	article.listselect();
+	article.selectseleniumoption();
+	System.out.println("New Page will open");
+  }
+
+	
+	
+	
+	
+	
 	
 }

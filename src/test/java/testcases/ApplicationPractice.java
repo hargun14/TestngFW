@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import components.BaseClass;
 import pageobject.HomePage;
 import pageobject.PracticePage;
+import utils.PropertyUtil;
 
 public class ApplicationPractice extends BaseClass{
 
@@ -15,7 +16,8 @@ public class ApplicationPractice extends BaseClass{
 	
 	public void openpage() throws IOException {
 		driver=initalizedriver();
-		driver.get(prop.getProperty("URL"));
+		System.out.println(PropertyUtil.get("config.properties", "URL"));
+		driver.get(PropertyUtil.get("config.properties", "URL"));
 		System.out.println("Launching Website");
 		HomePage home= new HomePage(driver);
 		System.out.println("landed to homepage");

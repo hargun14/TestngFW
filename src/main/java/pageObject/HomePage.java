@@ -8,13 +8,16 @@ import org.openqa.selenium.support.PageFactory;
 
 import components.Component;
 
-public class HomePage extends Component {
-
-	public WebDriver driver;
+/**
 	//global variable
 	// to give life to this driver , I will create its constructor and 
 	//pass driver parameter in it so that it will come from homepage
 	// run it on chromedriver class
+ */
+public class HomePage extends Component {
+
+	public WebDriver driver;
+
     public HomePage(WebDriver driver){
 	 this.driver=driver;
 	 PageFactory.initElements(driver,this);
@@ -23,7 +26,7 @@ public class HomePage extends Component {
 	private WebElement login;
 	@FindBy(xpath="//span[contains(text(),'Register')]")
 	private WebElement register;
-	@FindBy(xpath="//ul[@class='nav navbar-nav navbar-right']//li[1]")
+	@FindBy(xpath="//a[text()='Home']")
 	private WebElement homelink;
 	@FindBy(xpath="//ul[@class='nav navbar-nav navbar-right']//li[2]")
 	private WebElement courselink;
