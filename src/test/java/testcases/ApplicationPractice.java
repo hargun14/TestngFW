@@ -1,6 +1,8 @@
 package testcases;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Set;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -23,16 +25,29 @@ public class ApplicationPractice extends BaseClass{
 		System.out.println("landed to homepage");
 		home.clickpracticelink();
 		System.out.println("landed to practicepage");
+		PracticePage practice= new PracticePage(driver);
 }
-	@Test
+	@Test(enabled=false)
 	public void Verifyheader() throws IOException {
 		PracticePage practice= new PracticePage(driver);
 		practice.validateheader();
 		practice.dropdownselect();
 		practice.checkbox1();
 	    System.out.println("passed test case");
+	    }
+	    
+	    
+	    @Test
+	   public void openPage() {
+	    	PracticePage practice= new PracticePage(driver);
+	    	System.out.println(driver.getTitle());
+	    	practice.clickwindow();
+	    	System.out.println(driver.getTitle());
+	    	practice.workWindow(driver);
+	    	
+	    }
 	
-}
+
 }
 
 

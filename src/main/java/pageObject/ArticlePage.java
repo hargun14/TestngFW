@@ -29,7 +29,7 @@ public class ArticlePage extends Component {
 	public void selectseleniumoption() {
 		click(listSelenium);
 		System.out.println("option selected is selenium");
-
+System.out.println("hi");
 	}
 
 }

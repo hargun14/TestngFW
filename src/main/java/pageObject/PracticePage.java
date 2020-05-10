@@ -28,7 +28,15 @@ public class PracticePage extends Component {
 	private WebElement checkboxheader;
 	@FindBy (xpath="//input[@id='checkBoxOption1']")
 	private WebElement checkbox1;
-
+	@FindBy(xpath = "//button[@id='openwindow']")
+	private WebElement window;
+	
+	
+	
+	public void clickwindow() {
+		window.click();
+	}
+	
 	public void validateheader() {
 		verifyElement(header, VerificationProperties.DISPLAYED, "true");
 		System.out.println("Validated header of Practice page");
