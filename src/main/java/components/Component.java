@@ -13,18 +13,22 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import enumcomponent.VerificationProperties;
+import utils.PropertyUtil;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.Properties;
+import java.util.Set;
 
+/**
+ * Component class contains common method which is used in all test cases
+ *
+ */
 public class Component {
-	public WebDriver driver;
-	public Properties prop;
 	public String delay;
 
 	public void click(WebElement element) {
 		element.click();
-		System.out.println("hi");
 	}
 
 	public void enterText(WebElement element, String data) {
@@ -32,11 +36,7 @@ public class Component {
 	}
 
 	public long getImplicitlyWait() throws IOException {
-		prop = new Properties();
-		FileInputStream fis = new FileInputStream(
-				"C:\\Users\\DELL\\Desktop\\FW\\TestngFW\\src\\main\\resources\\config.properties");
-		prop.load(fis);
-		String implicitlyWait = prop.getProperty("delay");
+		String implicitlyWait = PropertyUtil.get("config.properties", "delay");
 		if (implicitlyWait != null)
 			return Long.parseLong(implicitlyWait);
 		else
@@ -47,7 +47,7 @@ public class Component {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
 	}
 
-	public void capturescreenshot() throws IOException {
+	public void capturescreenshot(WebDriver driver) throws IOException {
 		File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(screenshotFile, new File("C:\\Screenshot"));
 	}
@@ -57,6 +57,18 @@ public class Component {
 		case DISPLAYED:
 			Assert.assertEquals(Boolean.toString(element.isDisplayed()), expected);
 		}
+	}
+
+	
+	public void workWindow( WebDriver driver) {
+		Set<String> ids = driver.getWindowHandles();
+		Iterator<String> its = ids.iterator();
+		String parentid = its.next();
+		System.out.println( parentid);
+		String childid = its.next();
+		System.out.println( childid);
+		driver.switchTo().window(childid);
+		System.out.println(driver.getTitle());
 	}
 
 }
