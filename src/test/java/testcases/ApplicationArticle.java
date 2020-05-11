@@ -37,7 +37,6 @@ private static Logger logger=LogManager.getLogger(ApplicationArticle.class);
 		
 }
 	@Test
-	
     public void pagedisplay() {
 	ArticlePage article= new ArticlePage(driver);
 	System.out.println(" Validate Articles page");
