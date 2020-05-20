@@ -33,12 +33,14 @@ public class ApplicationEmailRegister extends BaseClass {
 		
 		HomePage home = new HomePage(driver);
 	    home.getlogin();
+	    System.out.println("user clicks on login button on homepage");
 	    System.out.println(PropertyUtil.get("dataFile.properties", "Username"));
 	    System.out.println(PropertyUtil.get("dataFile.properties", "Password"));
+	    System.out.println("user reads the username ans password from propertyfiles");
 		String user = PropertyUtil.get("dataFile.properties", "Username");
 		String pass =PropertyUtil.get("dataFile.properties", "Password");
-		System.out.println("landed to maine page and clicked on login button");
 		LoginPage login = new LoginPage(driver);
+		System.out.println(" user landed to the login page and enter credentials");
 		login.dologin(user, pass);
 		System.out.println("Enter email, password and clicked button");
 		System.out.println("login done using Email");
@@ -50,6 +52,7 @@ public class ApplicationEmailRegister extends BaseClass {
 	public void Title() throws IOException {
 		LoginPage login = new LoginPage(driver);
 		login.gettitle();
+		
 	}
 
 	@AfterTest
