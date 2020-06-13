@@ -24,7 +24,6 @@ public class ApplicationEmailRegister extends BaseClass {
 		System.out.println(PropertyUtil.get("config.properties", "URL"));
 		System.out.println("Launching Website");
 		driver.get(PropertyUtil.get("config.properties", "URL"));
-		
 	}
 
 	@Test

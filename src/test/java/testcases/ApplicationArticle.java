@@ -10,21 +10,23 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import components.BaseClass;
 import pageobject.ArticlePage;
 import pageobject.HomePage;
 import utils.PropertyUtil;
-
+@Listeners(customlistners.Listeners.class)
 public class ApplicationArticle extends BaseClass {
 
-private static Logger logger=LogManager.getLogger(ApplicationArticle.class);
-	@BeforeTest
+
+	@BeforeTest()
 	
 	public void openpage() throws IOException {
-		driver=initalizedriver();
+		
 		System.out.println(PropertyUtil.get("config.properties", "URL"));
 		driver.get(PropertyUtil.get("config.properties", "URL"));
 		System.out.println("Launching Website");	
@@ -35,6 +37,7 @@ private static Logger logger=LogManager.getLogger(ApplicationArticle.class);
 		home.clickarticle();
 		System.out.println(" Reached articles page");
 		
+		
 }
 	@Test
     public void pagedisplay() {
@@ -43,10 +46,14 @@ private static Logger logger=LogManager.getLogger(ApplicationArticle.class);
 	article.listselect();
 	article.selectseleniumoption();
 	System.out.println("New Page will open");
-	logger.info("test case passed");
+	
   }
 
-	
+	@AfterTest(enabled=false)
+	public void closeTest() {
+		System.out.println("Browser closing");
+		driver.close();
+	}
 	
 	
 	

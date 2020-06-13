@@ -10,26 +10,41 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+
+import components.BaseClass;
 import components.Component;
+import utils.ExtentReporterNg;
 
-public class Listeners extends Component implements ITestListener {
+public class Listeners extends BaseClass implements ITestListener {
 
+	 ExtentReports extent= ExtentReporterNg.getReporter();
 	
 	
 	public void onTestStart(ITestResult result) {
-		// TODO Auto-generated method stub
+		
+	
+		ExtentTest test=extent.createTest(result.getMethod().getMethodName());		 
+	    String testname=result.getMethod().getMethodName();
+		System.out.println("Testcase execution started" + "   " +testname);
+		
 		
 	}
 
 	public void onTestSuccess(ITestResult result) {
-	System.out.println("pass test case");
 		
+	   Component.captureScreenshot(driver);
+		String testname=result.getMethod().getMethodName();
+	    System.out.println("Test case passed" + "    "  +testname);
+		
+	
 	}
+	
+	
 
 	public void onTestFailure(ITestResult result) {
 		
-	
-	System.out.println("capture Screenshot on Test Failure"   +result.getTestName());
 	
 	}
 
@@ -49,7 +64,7 @@ public class Listeners extends Component implements ITestListener {
 	}
 
 	public void onFinish(ITestContext context) {
-		// TODO Auto-generated method stub
+		extent.flush();
 		
 	}
 

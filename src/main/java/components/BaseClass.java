@@ -20,6 +20,7 @@ public class BaseClass {
 	public String browserName;
 
 	/**
+	 * 
 	 * Method loads driver from config file and gets browser name. helps to launch
 	 * the browser present in config file
 	 */
@@ -36,7 +37,7 @@ public class BaseClass {
 			System.setProperty("webdriver.chrome.driver",path+"\\src\\main\\resources\\Drivers\\chromedriver.exe");    
 			System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
 			//System.setProperty("webdriver.chrome.driver", "C:\\Driver\\chromedriver.exe");
-			driver = new ChromeDriver();
+			driver = new ChromeDriver();//giving value to driver ie it is chrome now
 
 		} else if (browserName.equals("firefox")) {
 			driver = new FirefoxDriver();

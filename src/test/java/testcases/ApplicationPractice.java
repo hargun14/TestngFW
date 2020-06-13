@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -46,7 +47,11 @@ public class ApplicationPractice extends BaseClass{
 	    	practice.workWindow(driver);
 	    	
 	    }
-	
+	    @AfterTest
+		public void closeTest() {
+			System.out.println("Browser closing");
+			driver.close();
+		}
 
 }
 

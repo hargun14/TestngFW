@@ -8,22 +8,26 @@ import java.util.Properties;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import components.BaseClass;
 import pageobject.HomePage;
 import pageobject.LoginPage;
 import utils.PropertyUtil;
-//@Listeners(customlistners.Listeners.class)
+
+
 public class ApplicationLogin extends BaseClass {
 	String Username;
 	String Passwords;
 	String Invalidname;
 	String Invalidpass;
+	
+	
 
 	@BeforeTest
 	public void openpage() throws IOException {
-		driver=initalizedriver();
+		initalizedriver();
 		System.out.println(PropertyUtil.get("config.properties", "URL"));
 		driver.get(PropertyUtil.get("config.properties", "URL"));
 		System.out.println("Launching Website");	
@@ -47,8 +51,7 @@ public class ApplicationLogin extends BaseClass {
 		System.out.println("Enter email, password and clicked button");
 		System.out.println("login done using Email");
 		login.gettitle();
-		
-	}
+		}
 	@Test(enabled = false)
 	public void invalidlogin() throws IOException {
 		HomePage home = new HomePage(driver);
@@ -66,7 +69,7 @@ public class ApplicationLogin extends BaseClass {
 	@AfterTest
 	public void closeTest() {
 		System.out.println("Browser closing");
-		driver.close();
+		//driver.close();
 	}
 
 }
